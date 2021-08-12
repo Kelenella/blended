@@ -29,3 +29,33 @@ const max = +input.getAttribute('max')
 const step = +input.getAttribute('step')
 
 btnRender.addEventListener('click', render)
+btnClear.addEventListener('click', destroy)
+
+
+let size = 30;
+function render() {
+    
+    let arrDiv = [];
+    if (+input.value > min && +input.value <= max) {
+        for (let i = 0; i < +input.value; i += step) {
+            const divEl = document.createElement('div');
+            divEl.style.background = createRandom();
+            divEl.style.width = size + 'px';
+            divEl.style.height = size + 'px';
+            size += 10;
+            arrDiv.push(divEl);
+        }
+        divBoxes.append(...arrDiv)
+    } else {
+        alert ('Try once more')
+    }
+}
+
+function destroy() {
+    input.value = ''
+    size = 30
+    divBoxes.innerHTML = '';
+}
+function createRandom() {
+    return `rgb(${(Math.random() * 255) << 0},${(Math.random() * 255) << 0}, ${(Math.random() * 255) << 0})`;
+}
