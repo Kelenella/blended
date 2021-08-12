@@ -18,3 +18,14 @@
 // </div>
 
 // <div id="boxes"></div>
+
+const input = document.querySelector('input')
+const btnRender = document.querySelector('[data-action="render"]')
+const btnClear = document.querySelector('[data-action="destroy"]')
+const divBoxes = document.querySelector('#boxes')
+
+const min = +input.getAttribute('min')
+const max = +input.getAttribute('max')
+const step = +input.getAttribute('step')
+
+btnRender.addEventListener('click', render)
